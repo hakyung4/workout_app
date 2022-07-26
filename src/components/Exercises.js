@@ -17,6 +17,23 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
     const currentExercises = exercises.slice(indexOfFirstExercise, indexOfLastExercise);
     
+    useEffect(() => {
+        const fetchExercisesData = async () => {
+            let exercisesData = [];
+    
+            if (bodyPart === 'all') {
+                exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+            } else {
+                exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
+            }
+        
+            setExercises(exercisesData);
+            };
+    
+        fetchExercisesData();
+        // eslint-disable-next-line
+    }, [bodyPart]);
+
     return (
         <Box id="exercises"
         sx={{mt: { lg: '110px'}}}
