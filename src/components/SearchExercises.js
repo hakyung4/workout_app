@@ -44,13 +44,18 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
                     input: { fontWeight: '700', border: 'none', borderRadius: '4px' },
                     width: {lg: '800px', xs:'350px'},
                     backgroundColor: '#fff',
-                    borderRadius: '40px'
                 }}
                 height="76px"
                 value={search}
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
                 placeholder="Search Exercises"
                 type="text"
+                onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault()
+                        handleSearch()
+                    }
+                }}
                 />
                 <Button className="search-btn"
                 sx={{
@@ -61,9 +66,10 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
                     fontSize: {lg: '20px', xs:'14px'},
                     height: '56px',
                     position: 'absolute',
-                    right: '0'
+                    right: '0',
                 }}
-                onClick={handleSearch}>
+                onClick={handleSearch}
+                >
                     Search
                 </Button>
             </Box>

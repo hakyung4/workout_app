@@ -5,7 +5,7 @@ import ExerciseCard from './ExerciseCard'
 
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const exercisesPerPage = 9;
+    const exercisesPerPage = 6;
 
     const paginate = (e, value) => {
         setCurrentPage(value);
@@ -40,7 +40,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         mt="50px"
         p="20px"
         >
-            <Typography variant="h4" fontWeight="bold" sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="46px">
+            <Typography ml="21px" variant="h4" fontWeight="bold" sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="46px">
                 Showing Results
             </Typography>
             <Stack direction="row" sx={{ gap: {lg: '110px', xs: '50px'}}} flexWrap="wrap" justifyContent="center">
